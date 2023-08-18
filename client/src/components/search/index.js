@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from '../search-bar';
 import SearchResults from '../search-results';
 import Error from '../error';
+import Loading from '../loading';
 import useFetchBooks from '../../hooks/useFetchBooks';
 
 function Search() {
@@ -54,7 +55,7 @@ function Search() {
 
       {
         isLoading === true
-          ? <p>Loading!</p>
+          ? <Loading />
           : error !== null
             ? <Error message={`Failed to load books - ${error}`}/>
             : <SearchResults results={results} />
