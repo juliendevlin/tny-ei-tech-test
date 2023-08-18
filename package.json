@@ -20,5 +20,8 @@
   "engines": {
     "node": ">=18",
     "npm": ">=8"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.15.0"
   }
 }

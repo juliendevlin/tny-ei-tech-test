@@ -1,6 +1,15 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import Search from '../search'
+// import Detail from '../detail'
+
 function App() {
   return (
-    <div className="container mx-auto">hello, world</div>
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element={<Search />} /> */}
+        {/* <Route path="/books/:isbn" element={<Detail />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
