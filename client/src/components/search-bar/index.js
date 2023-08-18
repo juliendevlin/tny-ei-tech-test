@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function SearchBar({ searchHandler }) {
   const [searchValue, setSearchValue] = useState('');
-  console.log('search value: ', searchValue) // remove
+  
   return (
     <input 
       type="search" 
