@@ -10,6 +10,7 @@ function SearchResults({ results }) {
         leftSubheader={result.leftSubheader}
         rightSubheader={result.rightSubheader}
         borderColor={result.borderColor}
+        clickHandler={result.clickHandler}
       />
     );
   });

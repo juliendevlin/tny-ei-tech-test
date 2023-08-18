@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from '../search-bar';
 import SearchResults from '../search-results';
 import useFetchBooks from '../../hooks/useFetchBooks';
 
 function Search() {
+  const navigate = useNavigate();
   const { books, isLoading, error } = useFetchBooks();
   const [filteredBooks, setFilteredBooks] = useState(books);
   
@@ -39,6 +41,7 @@ function Search() {
       leftSubheader: book.author,
       rightSubheader: book.year,
       borderColor: book.type === 'fiction' ? 'teal' : 'pink',
+      clickHandler: () => navigate(`/books/${book.isbn}`)
     }
   })
 
