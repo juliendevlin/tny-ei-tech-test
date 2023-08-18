@@ -1,0 +1,25 @@
+function DetailCard({ header, borderColor, detailLabels, detailValues }) {
+  const detailList = detailLabels.map((label, i) => {
+    const uppercasedLabel = label.toUpperCase();
+    const value = detailValues[i];
+
+    return (
+      <div key={label}>
+        <h3 className="font-normal text-xs ">{uppercasedLabel}</h3>
+        <h4 className="font-medium text-lg">{value}</h4>
+      </div>
+    );
+  });
+
+  return (
+    <div className={`pl-2.5 border-l-2 border-${borderColor}-600`}>
+      <h2 className="font-medium text-4xl mb-4">{header}</h2>
+
+      <div className="flex gap-4 flex-col">
+        {detailList}
+      </div>
+    </div>
+  );
+}
+
+export default DetailCard;

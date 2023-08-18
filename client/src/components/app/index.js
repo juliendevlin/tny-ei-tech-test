@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Search from '../search'
 import Nav from '../nav';
-// import Detail from '../detail'
+import Detail from '../detail'
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Search />} />
-        {/* <Route path="/books/:isbn" element={<Detail />} /> */}
+        <Route path="/books/:isbn" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
