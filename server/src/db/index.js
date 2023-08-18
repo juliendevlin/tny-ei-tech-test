@@ -25,12 +25,28 @@ async function stop_db(db) {
   });
 }
 
-// Query for title, author, year, format of all books in database
+// Query for all data for all books in database
 async function getBooks(db) {
   const sql = `
-  SELECT books.title, authors.author, books.year, formats.format FROM books
+  SELECT 
+    books.title,
+    authors.author,
+    authors.date_of_birth,
+    authors.date_of_death,
+    books.isbn,
+    books.pages,
+    publishers.publisher,
+    cities.city,
+    books.year,
+    formats.format,
+    types.type
+  FROM books
+
   INNER JOIN authors ON authors.id = books.author_id
   INNER JOIN formats ON formats.id = books.format_id
+  INNER JOIN publishers ON publishers.id = books.publisher_id
+  INNER JOIN cities ON cities.id = publishers.city_id
+  INNER JOIN types ON types.id = books.type_id
   `;
 
   return new Promise((resolve, reject) => {
@@ -43,23 +59,28 @@ async function getBooks(db) {
   });
 }
 
-// Query for title, author, publisher, city, format, year, isbn of single book by isbn
+// Query for all data for single book by isbn
 async function getBook(db, isbn) {
   const sql = `
     SELECT 
       books.title,
       authors.author,
+      authors.date_of_birth,
+      authors.date_of_death,
+      books.isbn,
+      books.pages,
       publishers.publisher,
       cities.city,
-      formats.format,
       books.year,
-      books.isbn
+      formats.format,
+      types.type
     FROM books
 
     INNER JOIN authors ON authors.id = books.author_id
     INNER JOIN formats ON formats.id = books.format_id
     INNER JOIN publishers ON publishers.id = books.publisher_id
     INNER JOIN cities ON cities.id = publishers.city_id
+    INNER JOIN types ON types.id = books.type_id
 
     WHERE books.isbn = ?
   `;
