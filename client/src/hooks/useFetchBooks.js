@@ -5,22 +5,22 @@ function useFetchBooks() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchBooks = async () => {
-    setIsLoading(true);
-
-    try {
-      const response = await fetch('http://localhost:3001/books');
-      const data = await response.json();
-
-      setIsLoading(false);
-      setBooks(data);
-    } catch(err) {
-      setIsLoading(false);
-      setError(err);
-    }
-  };
-
   useEffect(() => {
+    const fetchBooks = async () => {
+      setIsLoading(true);
+  
+      try {
+        const response = await fetch('http://localhost:3001/books');
+        const data = await response.json();
+  
+        setIsLoading(false);
+        setBooks(data);
+      } catch(err) {
+        setIsLoading(false);
+        setError(err);
+      }
+    };
+    
     fetchBooks();
   }, []);
 
