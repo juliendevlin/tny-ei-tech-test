@@ -1,7 +1,7 @@
 function SearchResultsItem({ header, leftSubheader, rightSubheader, borderColor, clickHandler }) {
   return (
     <div 
-      className={`py-1 border-t-2 border-${borderColor}-600 hover:cursor-pointer`} 
+      className={`py-1 border-t-2 border-${borderColor}-600 hover:cursor-pointer`}
       onClick={clickHandler}
     >
       <h2 className="font-medium text-4xl">{header}</h2>
