@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchBar from '../search-bar';
 import SearchResults from '../search-results';
+import Error from '../error';
 import useFetchBooks from '../../hooks/useFetchBooks';
 
 function Search() {
@@ -44,7 +45,7 @@ function Search() {
       clickHandler: () => navigate(`/books/${book.isbn}`)
     }
   })
-
+  
   return (
     <div className="mx-11">
       <div className="mb-12">
@@ -52,10 +53,10 @@ function Search() {
       </div>
 
       {
-        isLoading
+        isLoading === true
           ? <p>Loading!</p>
-          : error 
-            ? <p>error!</p>
+          : error !== null
+            ? <Error message={`Failed to load books - ${error}`}/>
             : <SearchResults results={results} />
       } 
     </div>

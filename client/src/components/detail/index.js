@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import DetailCard from '../detail-card';
+import Error from '../error';
 import useFetchBook from "../../hooks/useFetchBook";
 
 function Detail() {
@@ -14,10 +15,10 @@ function Detail() {
   return (
     <div className="mx-11">
       {
-        isLoading
+        isLoading === true
           ? <p>Loading!</p>
-          : error
-            ? <p>Error!</p>
+          : error !== null
+            ? <Error message={`Failed to load book - ${error}`}/>
             : (
               <DetailCard 
                 header={header}
