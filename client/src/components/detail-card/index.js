@@ -12,7 +12,9 @@ function DetailCard({ header, borderColor, detailLabels, detailValues }) {
   });
 
   return (
-    <div className={`pl-2.5 border-l-2 border-${borderColor}-600`}>
+    // Cannot interpolation/concatenate partial class names together with Tailwind
+    // Must exist as complete unbroken string literal
+    <div className={`pl-2.5 border-l-2 ${borderColor === 'teal' ? 'border-teal-600' : 'border-pink-600'}`}>
       <h2 className="font-medium text-4xl mb-4">{header}</h2>
 
       <div className="flex gap-4 flex-col">

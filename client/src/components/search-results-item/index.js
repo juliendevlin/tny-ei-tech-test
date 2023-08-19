@@ -1,7 +1,9 @@
 function SearchResultsItem({ header, leftSubheader, rightSubheader, borderColor, clickHandler }) {
   return (
     <div 
-      className={`py-1 border-t-2 border-${borderColor}-600 hover:cursor-pointer`}
+      // Cannot interpolation/concatenate partial class names together with Tailwind
+      // Must exist as complete unbroken string literal
+      className={`py-1 border-t-2 ${borderColor === 'teal' ? 'border-teal-600' : 'border-pink-600'} hover:cursor-pointer`}
       onClick={clickHandler}
     >
       <h2 className="font-medium text-4xl">{header}</h2>
