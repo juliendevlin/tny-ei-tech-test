@@ -34,8 +34,10 @@ function Search() {
     }
   };
 
-  const results = filteredBooks
-    .toSorted((a, b) => a.year - b.year)
+  // assign a copy of filteredBooks to results
+  // Can then be sorted in place and mapped to the expected data structure for the SearchResults component
+  const results = [...filteredBooks]
+    .sort((a, b) => a.year - b.year)
     .map((book) => {
     return {
       id: book.isbn,
