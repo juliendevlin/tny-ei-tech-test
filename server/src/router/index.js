@@ -28,10 +28,10 @@ function create_router(db) {
     }
   });
 
-  router.get('/books', async (req, res) => {
+  router.get('/books', async (req, res, next) => {
     try {
       const books = await getBooks(db);
-      res.json(books);
+      return res.json(books);
     } catch (err) {
       return next({
         log: `Error while querying database - ${err}`,
