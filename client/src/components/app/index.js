@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Search from '../search'
 import Nav from '../nav';
 import Detail from '../detail';
@@ -6,7 +6,7 @@ import NotFound from '../not-found';
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Nav />
 
       <Routes>
@@ -16,7 +16,7 @@ function App() {
         {/* Catch-all route that renders 'not found' page */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 

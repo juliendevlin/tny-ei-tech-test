@@ -12,7 +12,7 @@ function Search() {
   const [filteredBooks, setFilteredBooks] = useState(books);
   
   useEffect(() => {
-    setFilteredBooks(books)
+    setFilteredBooks(books);
   }, [books]);
 
   const searchHandler = (searchValue) => {

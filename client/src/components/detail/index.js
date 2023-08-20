@@ -14,7 +14,7 @@ function Detail() {
   const detailValues = [book.author, book.publisher, book.city, book.format, book.year, book.isbn];
 
   return (
-    <div className="mx-11">
+    <div className="mx-11" data-testid="detail">
       {
         isLoading === true
           ? < Loading />
