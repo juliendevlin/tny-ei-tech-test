@@ -14,7 +14,8 @@ function useFetchBooks() {
         const data = await response.json();
 
         setIsLoading(false);
-        setBooks(data);
+        if (response.ok) setBooks(data);
+        else setError(data.err)
       } catch(err) {
         setIsLoading(false);
         setError(err);

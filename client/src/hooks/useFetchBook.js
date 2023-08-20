@@ -14,7 +14,8 @@ function useFetchBook(isbn) {
         const data = await response.json();
 
         setIsLoading(false);
-        setBook(data);
+        if (response.ok) setBook(data);
+        else setError(data.err)
       } catch(err) {
         setIsLoading(false);
         setError(err);
