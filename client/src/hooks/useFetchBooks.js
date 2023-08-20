@@ -12,7 +12,7 @@ function useFetchBooks() {
       try {
         const response = await fetch('http://localhost:3001/books');
         const data = await response.json();
-  
+
         setIsLoading(false);
         setBooks(data);
       } catch(err) {
@@ -20,7 +20,7 @@ function useFetchBooks() {
         setError(err);
       }
     };
-    
+
     fetchBooks();
   }, []);
 

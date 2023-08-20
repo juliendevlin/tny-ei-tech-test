@@ -31,15 +31,15 @@ describe('Detail component', () => {
     const server = setupServer(
       rest.get('http://localhost:3001/books/test', (req, res, ctx) => {
         return res(ctx.status(400));
-      }),
-    )
-    
-    server.listen()
+      })
+    );
+
+    server.listen();
 
     render(
       <MemoryRouter initialEntries={['/books/test']}>
         <Routes>
-          <Route path='/books/:isbn' element={<Detail />} /> 
+          <Route path='/books/:isbn' element={<Detail />} />
         </Routes>
       </MemoryRouter>
     );
@@ -62,16 +62,16 @@ describe('Detail component', () => {
           isbn: 'test isbn',
           title: 'test title',
           type: 'fiction',
-        }))
+        }));
       }),
-    )
+    );
 
     server.listen();
 
     render(
       <MemoryRouter initialEntries={['/books/test']}>
         <Routes>
-          <Route path='/books/:isbn' element={<Detail />} /> 
+          <Route path='/books/:isbn' element={<Detail />} />
         </Routes>
       </MemoryRouter>
     );

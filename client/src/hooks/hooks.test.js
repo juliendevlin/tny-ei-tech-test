@@ -10,7 +10,7 @@ describe('useFetchBook', () => {
       rest.get('http://localhost:3001/books/test', (req, res, ctx) => {
         return res(ctx.json('success!'));
       }),
-    )
+    );
 
     server.listen();
 
@@ -25,7 +25,7 @@ describe('useFetchBook', () => {
       rest.get('http://localhost:3001/books/test', (req, res, ctx) => {
         return res(ctx.status(400));
       }),
-    )
+    );
 
     server.listen();
 
@@ -41,7 +41,7 @@ describe('useFetchBook', () => {
       rest.get('http://localhost:3001/books/test', (req, res, ctx) => {
         return res(ctx.json('success!'));
       }),
-    )
+    );
 
     server.listen();
 
@@ -59,7 +59,7 @@ describe('useFetchBooks', () => {
       rest.get('http://localhost:3001/books', (req, res, ctx) => {
         return res(ctx.json('success!'));
       }),
-    )
+    );
 
     server.listen();
 
@@ -74,7 +74,7 @@ describe('useFetchBooks', () => {
       rest.get('http://localhost:3001/books', (req, res, ctx) => {
         return res(ctx.status(400));
       }),
-    )
+    );
 
     server.listen();
 
@@ -90,7 +90,7 @@ describe('useFetchBooks', () => {
       rest.get('http://localhost:3001/books', (req, res, ctx) => {
         return res(ctx.json('success!'));
       }),
-    )
+    );
 
     server.listen();
 

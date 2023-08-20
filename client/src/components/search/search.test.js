@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { rest } from 'msw';
-import { setupServer } from 'msw/node'
+import { setupServer } from 'msw/node';
 import Search from './';
 
 // Mock React Router's useNavigate hook
@@ -10,7 +10,7 @@ jest.mock("react-router-dom", () => {
   return {
     ...(jest.requireActual("react-router-dom")),
     useNavigate: () => mockNavigate,
-  }
+  };
 });
 
 describe('Search component', () => {
@@ -30,8 +30,8 @@ describe('Search component', () => {
     const server = setupServer(
       rest.get('http://localhost:3001/books', (req, res, ctx) => {
         return res(ctx.status(400));
-      }),
-    )
+      })
+    );
     
     server.listen();
 
@@ -61,11 +61,11 @@ describe('Search component', () => {
           }
         ]));
       }),
-    )
+    );
 
-    beforeAll(() => server.listen())
-    afterEach(() => server.resetHandlers())
-    afterAll(() => server.close())
+    beforeAll(() => server.listen());
+    afterEach(() => server.resetHandlers());
+    afterAll(() => server.close());
 
     it('Should render search results after successfull API call', async () => {
       render (<Search />, {wrapper: BrowserRouter});
@@ -77,7 +77,7 @@ describe('Search component', () => {
       expect(await screen.findByText('test author 2')).toBeInTheDocument();
       expect(await screen.findByText('2')).toBeInTheDocument();
     });
-  
+
     it('Should sort search results by year', async () => {
       render (<Search />, {wrapper: BrowserRouter});
 
@@ -85,7 +85,7 @@ describe('Search component', () => {
       expect(headings[2]).toHaveTextContent(1);
       expect(headings[5]).toHaveTextContent(2);
     });
-  
+
     it('Should show all results by default/when the search bar is empty', async () => {
       render (<Search />, {wrapper: BrowserRouter});
 
@@ -101,7 +101,7 @@ describe('Search component', () => {
       expect(item1).toBeInTheDocument();
       expect(item2).toBeInTheDocument();
     });
-  
+
     it('Should filter results by title matches', async () => {
       render (<Search />, {wrapper: BrowserRouter});
 
@@ -114,7 +114,7 @@ describe('Search component', () => {
       expect(item1).toBeInTheDocument();
       expect(item2).not.toBeInTheDocument();
     });
-  
+
     it('Should filter results by author matches', async () => {
       render (<Search />, {wrapper: BrowserRouter});
 
@@ -133,7 +133,7 @@ describe('Search component', () => {
 
       const searchItem = (await screen.findByText('test title 1'));
       fireEvent.click(searchItem);
-      
+
       expect(mockNavigate).toHaveBeenCalled();
       expect(mockNavigate).toHaveBeenCalledWith('/books/test isbn 1');
     });

@@ -12,7 +12,7 @@ function useFetchBook(isbn) {
       try {
         const response = await fetch(`http://localhost:3001/books/${isbn}`);
         const data = await response.json();
-  
+
         setIsLoading(false);
         setBook(data);
       } catch(err) {

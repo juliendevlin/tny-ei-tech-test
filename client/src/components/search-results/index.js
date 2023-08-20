@@ -2,7 +2,6 @@ import SearchResultsItem from '../search-results-item';
 
 function SearchResults({ results }) {
   const resultsList = results.map((result) => {
-    
     return (
       <SearchResultsItem 
         key={result.id}

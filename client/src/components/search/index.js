@@ -8,15 +8,22 @@ import useFetchBooks from '../../hooks/useFetchBooks';
 
 function Search() {
   const navigate = useNavigate();
+
+  // Fetches all books from API
   const { books, isLoading, error } = useFetchBooks();
+
+  // State to contain books to displa based on user search
   const [filteredBooks, setFilteredBooks] = useState(books);
-  
+
+  // Set value of filtered books when API responds
   useEffect(() => {
     setFilteredBooks(books);
   }, [books]);
 
   const searchHandler = (searchValue) => {
+    // Display all books if there is no search input
     if (searchValue === '') setFilteredBooks(books);
+    // Otherwise standardize search string to lowercase and find title/author matches
     else {
       const lowercasedSearchValue = searchValue.toLowerCase();
       
@@ -34,7 +41,7 @@ function Search() {
     }
   };
 
-  // assign a copy of filteredBooks to results
+  // Assign a copy of filteredBooks to results to pass down
   // Can then be sorted in place and mapped to the expected data structure for the SearchResults component
   const results = [...filteredBooks]
     .sort((a, b) => a.year - b.year)

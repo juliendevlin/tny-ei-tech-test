@@ -24,7 +24,7 @@ describe('Nav component', () => {
 
     const logo = screen.getByText('[books]');
     fireEvent.click(logo);
-    
+
     expect(mockNavigate).toHaveBeenCalled();
       expect(mockNavigate).toHaveBeenCalledWith('/');
   });

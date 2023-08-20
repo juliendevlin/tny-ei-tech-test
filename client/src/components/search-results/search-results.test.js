@@ -4,9 +4,9 @@ import SearchResults from './';
 describe('Search Results component', () => {
   it('Should render data for multiple search result items', () => {
     render(
-      <SearchResults 
+      <SearchResults
         results={[
-          {id: 1, header: 'header 1', leftSubheader: 'left subheader 1', rightSubheader: 'right subheader 1'}, 
+          {id: 1, header: 'header 1', leftSubheader: 'left subheader 1', rightSubheader: 'right subheader 1'},
           {id: 2, header: 'header 2', leftSubheader: 'left subheader 2', rightSubheader: 'right subheader 2'}
         ]}
       />
@@ -27,7 +27,7 @@ describe('Search Results component', () => {
     const mockHandler2 = jest.fn();
 
     render(
-      <SearchResults 
+      <SearchResults
         results={[
           {id: 1, header: 'header 1', clickHandler: mockHandler1},
           {id: 2, header: 'header 2', clickHandler: mockHandler2}
@@ -35,11 +35,11 @@ describe('Search Results component', () => {
       />
     );
 
-    const result1 = screen.getByText('header 1')
-    fireEvent.click(result1)
+    const result1 = screen.getByText('header 1');
+    fireEvent.click(result1);
 
-    const result2 = screen.getByText('header 2')
-    fireEvent.click(result2)
+    const result2 = screen.getByText('header 2');
+    fireEvent.click(result2);
 
     expect(mockHandler1).toHaveBeenCalled();
     expect(mockHandler2).toHaveBeenCalled();

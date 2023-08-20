@@ -1,8 +1,9 @@
 import { useState } from "react";
 
 function SearchBar({ searchHandler }) {
+  // Control component value
   const [searchValue, setSearchValue] = useState('');
-  
+
   return (
     <input 
       type="search" 
