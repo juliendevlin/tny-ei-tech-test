@@ -7,8 +7,11 @@ const NODE_PORT = process.env.NODE_PORT || 3001;
 async function start_server(db) {
   const app = express();
 
-  // Enable CORS for all requests.
+  // Enable CORS for all requests
   app.use(cors());
+
+  // Parse request bodies
+  app.use(express.json());
 
   // Define routes
   const router = create_router(db);

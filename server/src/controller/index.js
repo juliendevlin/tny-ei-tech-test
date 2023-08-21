@@ -48,14 +48,69 @@ function createBooksController(db) {
         });
       }
     },
+
     createBook: async (req, res, next) => {
+      const {
+        title,
+        isbn,
+        pages,
+        year,
+        authorId,
+        publisherId,
+        formatId,
+        typeId
+      } = req.body;
       
+      try {
+        await insertBook(db, [title, isbn, pages, year, authorId, publisherId, formatId, typeId]);
+        return next();
+      } catch(err) {
+        return next({
+          log: `Error while creating book in database - ${err}`,
+          status: 400,
+          message: {err: 'Failed to create resource'},
+        });
+      }
     },
+
     updateBook: async (req, res, next) => {
-
+      const { isbn } = req.params;
+      const {
+        title,
+        isbn: newIsbn,
+        pages,
+        year,
+        authorId,
+        publisherId,
+        formatId,
+        typeId
+      } = req.body;
+      
+      try {
+        await updateBook(db, [title, newIsbn, pages, year, authorId, publisherId, formatId, typeId, isbn]);
+        return next();
+      } catch(err) {
+        return next({
+          log: `Error while updating book in database - ${err}`,
+          status: 400,
+          message: {err: 'Failed to update resource'},
+        });
+      }
     },
-    deleteBook: async (req, res, next) => {
 
+    deleteBook: async (req, res, next) => {
+      const { isbn } = req.params;
+
+      try {
+        await deleteBook(db, isbn);
+        return next();
+      } catch(err) {
+        return next({
+          log: `Error while deleting book in database - ${err}`,
+          status: 400,
+          message: {err: 'Failed to destroy resource'},
+        });
+      }
     },
   };
 }

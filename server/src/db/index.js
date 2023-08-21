@@ -29,6 +29,7 @@ async function stop_db(db) {
 async function selectBooks(db) {
   const sql = `
   SELECT 
+    books.id,
     books.title,
     authors.author,
     authors.date_of_birth,
@@ -63,6 +64,7 @@ async function selectBooks(db) {
 async function selectBook(db, isbn) {
   const sql = `
     SELECT 
+      books.id,
       books.title,
       authors.author,
       authors.date_of_birth,
@@ -95,9 +97,72 @@ async function selectBook(db, isbn) {
   });
 }
 
+// Insert a new book into books table
+async function insertBook(db, book) {
+  const sql = `
+    INSERT INTO books (title, isbn, pages, year, author_id, publisher_id, format_id, type_id)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+  `;
+
+  return new Promise((resolve, reject) => {
+    db.run(sql, book, (err) => {
+      if (err) {
+        reject(err);
+      }
+      resolve();
+    });
+  });
+}
+
+// Update a book from books table
+async function updateBook(db, book) {
+  const sql = `
+    UPDATE books
+    SET
+      title = ?,
+      isbn = ?,
+      pages = ?,
+      year = ?,
+      author_id = ?,
+      publisher_id = ?,
+      format_id = ?,
+      type_id = ?
+    WHERE isbn = ?;
+  `;
+
+  return new Promise((resolve, reject) => {
+    db.run(sql, book, (err) => {
+      if (err) {
+        reject(err);
+      }
+      resolve();
+    });
+  });
+}
+
+// Delete a book from books table
+async function deleteBook(db, isbn) {
+  const sql = `
+    DELETE FROM books 
+    WHERE isbn = ?;
+  `;
+
+  return new Promise((resolve, reject) => {
+    db.run(sql, isbn, (err) => {
+      if (err) {
+        reject(err);
+      }
+      resolve();
+    });
+  });
+}
+
 module.exports = {
   start_db,
   stop_db,
   selectBooks,
   selectBook,
+  insertBook,
+  updateBook,
+  deleteBook,
 };
