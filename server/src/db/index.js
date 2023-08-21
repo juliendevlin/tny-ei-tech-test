@@ -26,7 +26,7 @@ async function stop_db(db) {
 }
 
 // Query for all data for all books in database
-async function getBooks(db) {
+async function selectBooks(db) {
   const sql = `
   SELECT 
     books.title,
@@ -55,12 +55,12 @@ async function getBooks(db) {
         reject(err);
       }
       resolve(rows);
-    })
+    });
   });
 }
 
 // Query for all data for single book by isbn
-async function getBook(db, isbn) {
+async function selectBook(db, isbn) {
   const sql = `
     SELECT 
       books.title,
@@ -91,13 +91,13 @@ async function getBook(db, isbn) {
         reject(err);
       }
       resolve(rows);
-    })
+    });
   });
 }
 
 module.exports = {
   start_db,
   stop_db,
-  getBooks,
-  getBook,
-}
+  selectBooks,
+  selectBook,
+};
