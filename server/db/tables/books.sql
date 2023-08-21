@@ -4,7 +4,7 @@ CREATE TABLE books (
   id           INTEGER,
   title        TEXT    NOT NULL,
   author_id    INTEGER NOT NULL,
-  isbn         TEXT    NOT NULL,
+  isbn         TEXT    NOT NULL UNIQUE,
   pages        INTEGER NOT NULL,
   publisher_id INTEGER NOT NULL,
   year         INTEGER NOT NULL,

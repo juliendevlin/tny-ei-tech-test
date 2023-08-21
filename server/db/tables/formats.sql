@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS formats;
 
 CREATE TABLE formats (
   id     INTEGER,
-  format TEXT     NOT NULL,
+  format TEXT     NOT NULL UNIQUE,
   PRIMARY KEY(id)
 );
 
