@@ -29,7 +29,6 @@ async function stop_db(db) {
 async function selectBooks(db) {
   const sql = `
   SELECT 
-    books.id,
     books.title,
     authors.author,
     authors.date_of_birth,
@@ -64,7 +63,6 @@ async function selectBooks(db) {
 async function selectBook(db, isbn) {
   const sql = `
     SELECT 
-      books.id,
       books.title,
       authors.author,
       authors.date_of_birth,
