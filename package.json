@@ -10,6 +10,7 @@
   "scripts": {
     "seed:db": "npm run seed:db --workspace=server",
     "test:client": "npm run test --workspace=client",
+    "test:server": "npm run test --workspace=server",
     "serve:server": "npm run serve --workspace=server",
     "start:server": "npm run start --workspace=server",
     "start:client": "npm run start --workspace=client"
