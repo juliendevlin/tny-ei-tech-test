@@ -19,7 +19,6 @@ describe('bookController', () => {
   describe('getBook',  () => {
     const db = {
       get: (sql, param, cb) => {
-        console.log(param)
         if (param === 'valid-isbn') {
           return cb(null, 'success!');
         }
