@@ -7,12 +7,12 @@ function create_router(db) {
 
   router.get('/books/:isbn', booksController.getBook, async (req, res, next) => {
     const { book } = res.locals;
-    return res.json(book);
+    return res.status(200).json(book);
   });
 
   router.get('/books', booksController.getBooks, async (req, res, next) => {
     const { books } = res.locals;
-    return res.json(books);
+    return res.status(200).json(books);
   });
 
   router.post('/books', booksController.createBook, async (req, res, next) => {
