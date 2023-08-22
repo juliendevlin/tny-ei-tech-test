@@ -8,7 +8,7 @@
     "serve": "node index.js",
     "start": "nodemon index.js",
     "seed:db": "scripts/seed-db.sh",
-    "test": "jest"
+    "test": "scripts/seed-db-test.sh && DB_LOCATION=db-test/tny-ei-tech-test.db jest"
   },
   "keywords": [],
   "author": "",

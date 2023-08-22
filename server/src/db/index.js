@@ -1,7 +1,7 @@
 const path = require('node:path');
 const sqlite3 = require('sqlite3').verbose();
 
-const DB_LOCATION = 'db/data/tny-ei-tech-test.db';
+const DB_LOCATION = process.env.DB_LOCATION || 'db/data/tny-ei-tech-test.db';
 
 async function start_db() {
   const filename = path.resolve('.', DB_LOCATION);

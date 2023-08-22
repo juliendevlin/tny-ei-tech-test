@@ -4,7 +4,7 @@ const { create_router } = require('./router');
 
 const NODE_PORT = process.env.NODE_PORT || 3001;
 
-async function start_server(db) {
+function setupApp() {
   const app = express();
 
   // Enable CORS for all requests
@@ -12,10 +12,6 @@ async function start_server(db) {
 
   // Parse request bodies
   app.use(express.json());
-
-  // Define routes
-  const router = create_router(db);
-  app.use(router);
 
   // Error Handler
   app.use((err, req, res, next) => {
@@ -29,6 +25,16 @@ async function start_server(db) {
     console.log(errorObj.log);
     return res.status(errorObj.status).json(errorObj.message);
   });
+
+  return app;
+}
+
+async function start_server(db) {
+  const app = setupApp();
+
+  // Define routes
+  const router = create_router(db);
+  app.use(router);
 
   return new Promise((resolve) => {
     const server = app.listen(NODE_PORT, () => {
@@ -45,6 +51,7 @@ async function stop_server(server) {
 }
 
 module.exports = {
+  setupApp,
   start_server,
   stop_server,
 };
