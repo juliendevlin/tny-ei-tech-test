@@ -37,7 +37,7 @@ function createBooksController(db) {
     getBooks: async (req, res, next) => {
       try {
         const books = await selectBooks(db);
-        
+
         res.locals.books = books;
         return next();
       } catch (err) {
@@ -58,9 +58,9 @@ function createBooksController(db) {
         authorId,
         publisherId,
         formatId,
-        typeId
+        typeId,
       } = req.body;
-      
+
       try {
         await insertBook(db, [title, isbn, pages, year, authorId, publisherId, formatId, typeId]);
         return next();
@@ -85,7 +85,7 @@ function createBooksController(db) {
         formatId,
         typeId
       } = req.body;
-      
+
       try {
         await updateBook(db, [title, newIsbn, pages, year, authorId, publisherId, formatId, typeId, isbn]);
         return next();
